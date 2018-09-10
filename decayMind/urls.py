@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from main_sys.views import userModel,sysModel
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
+    path(r'index/',sysModel.index),
+    path(r'playground',sysModel.playground),
+
+    path(r'userModel',userModel.userModel),
 ]

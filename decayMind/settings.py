@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main_sys',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,21 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+TEMPLATE_LOADERS = (
+
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',加的
+)
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.加的
+    # '/home/andrew/hg_repo/Django/Django/templates',
+
+)
 
 ROOT_URLCONF = 'decayMind.urls'
 
@@ -75,10 +91,18 @@ WSGI_APPLICATION = 'decayMind.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+            'ENGINE': 'django.db.backends.mysql',   # 数据库引擎
+            'NAME': 'stock_market',       # 你要存储数据的库名，事先要创建之
+            'USER': 'root',         # 数据库用户名
+            'PASSWORD': '123456',     # 密码
+            'HOST': 'localhost',    # 主机
+            'PORT': '3306',         # 数据库使用的端口
+        }
 }
 
 
